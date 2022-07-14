@@ -1,0 +1,18 @@
+{
+  "id": 194562,
+  "category": {
+    "id": 1,
+    "name": "cat"
+  },
+  "name": "Zambre",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 20220714,
+      "name": "data"
+    }
+  ],
+  "status": "sold"
+}

@@ -62,4 +62,42 @@ public class Pet {
 
     }
 
+    @Test(priority = 3)
+    public void alterarPet() throws IOException {
+        String jsonBody = lerJson("db/pet2.json");
+
+        given()
+                .contentType("application/json")
+                .log().all()
+                .body(jsonBody)
+        .when()
+                .put(uri)
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("name", is("Zambre"))
+                .body("status", is("sold"))
+                .body("category.name", is("cat"))
+                .body("tags.name", contains("data"))
+        ;
+    }
+
+    @Test(priority = 4)
+    public void excluirPet(){
+        String petId = "194567";
+
+        given()
+                .contentType("application/json")
+                .log().all()
+        .when()
+                .delete(uri + "/" + petId)
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("code", is(200))
+                .body("type", is("unknown"))
+                .body("message", is(petId))
+        ;
+    }
+
 }
